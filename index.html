@@ -1,31 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Fylo data storage component</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Frontend Mentor | Fylo data storage component</title>
+  </head>
+  <body>
+    <div class="fylo">
+      <div
+        class="fylo-data-storage-container"
+        id="fylo-data-storage-container"
+        :style="{height:containerHeight + 'px'}"
+      >
+        <div class="fylo-data-item-container">
+          <div class="fylo-data-container">
+            <div class="fylo-data fylo-data-left">
+              <img src="./images/logo.svg" />
+              <div class="icons-container">
+                <div class="icon-container icon-document">
+                  <img src="./images/icon-document.svg" />
+                </div>
+                <div class="icon-container icon-folder">
+                  <img src="./images/icon-folder.svg" />
+                </div>
+                <div class="icon-container icon-upload">
+                  <img src="./images/icon-upload.svg" />
+                </div>
+              </div>
+            </div>
+            <div class="fylo-data fylo-data-right">
+              <div class="gb-left-container" id="gb-left-container-desktop">
+                <div class="gb-left">
+                  <div class="gb-left-text-container">
+                    <span>185</span>
+                    <p>GB Left</p>
+                  </div>
+                  <div class="triangle"></div>
+                </div>
+              </div>
+              <div class="fylo-data-right-content">
+                <div class="fylo-data-right-text">
+                  <p>You’ve used <span>815 GB</span> of your storage</p>
+                </div>
+                <div class="progress-container">
+                  <div class="progress">
+                    <div class="progress-tracker"></div>
+                  </div>
+                </div>
+                <div class="propgress-bounds">
+                  <div class="progress-bound progress-lower-bound">0 GB</div>
+                  <div class="progress-bound progress-upper-bound">1000 GB</div>
+                </div>
+              </div>
+            </div>
+            <div class="gb-left-container" id="gb-left-container-mobile">
+              <div class="gb-left">
+                <div class="gb-left-text-container">
+                  <span>185</span>
+                  <p>GB Left</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-image-container" ref="desktopImageContainer">
+          <img src="./images/bg-desktop.svg" class="bg-image" />
+        </div>
+      </div>
+    </div>
 
-  You’ve used 815 GB of your storage
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Marina Hambaryan</a>.
+    </div>
+  </body>
+  <script>
+    var app = new Vue({
+      el: "#fylo-data-storage-container",
+      data: {
+        containerHeight: "auto",
+        containerWidth: "auto",
+        mobile: true,
+      },
+      methods: {
+        setHeight(imageHeight) {
+          let multiplier = 2;
+          if (imageHeight < 150) {
+            multiplier = 3;
+          }
+          this.containerHeight = imageHeight * multiplier;
+        },
+        getHeight() {
+          const imageHeight = this.$refs.desktopImageContainer.clientHeight;
+          this.setHeight(imageHeight);
+        },
+        getWidth() {
+          const imageWidth = this.$refs.desktopImageContainer.clientWidth;
+          this.containerWidth = imageWidth;
+        },
+        getResolution() {
+          this.getWidth();
+          if (this.containerWidth > 500) {
+            this.getHeight();
+          } else {
+            this.containerHeight = window.innerHeight;
+          }
+        },
+      },
+      mounted() {
+        this.getResolution();
+        window.addEventListener("resize", this.getResolution);
+      },
 
-  185 GB Left
-  
-  0 GB
-  1000 GB
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+      beforeDestroy() {
+        window.removeEventListener("resize", this.getResolution);
+      },
+    });
+  </script>
 </html>

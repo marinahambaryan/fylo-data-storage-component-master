@@ -1,0 +1,258 @@
+body {
+  font-family: "Raleway", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.fylo {
+  display: flex;
+  justify-content: center;
+}
+
+.fylo-data-storage-container {
+  background-color: hsl(229, 57%, 11%);
+  width: 100%;
+  height: 800px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  max-width: 1440px;
+}
+
+.fylo-data-item-container {
+  display: flex;
+  position: absolute;
+  bottom: 40%;
+  z-index: 1;
+  width: 100%;
+  max-width: 1440px;
+  justify-content: center;
+}
+
+.fylo-data-container {
+  display: flex;
+  flex-direction: row;
+  width: 65%;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
+.bg-image-container {
+  position: absolute;
+  bottom: 0;
+}
+
+.fylo-data {
+  background-color: hsl(228, 56%, 26%);
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.fylo-data.fylo-data-left {
+  border-top-right-radius: 75px;
+  flex: 1.2;
+}
+
+.icons-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  flex-wrap: nowrap;
+}
+
+.icon-container {
+  background-color: hsl(229, 57%, 11%);
+  padding: 7px;
+  border-radius: 8px;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.fylo-data.fylo-data-right {
+  margin-left: 25px;
+  flex: 3;
+}
+
+.gb-left-container {
+  position: relative;
+}
+
+#gb-left-container-mobile {
+  display: none;
+}
+
+.gb-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.gb-left-text-container {
+  padding: 10px 17px;
+  background-color: white;
+  border-radius: 8px;
+  border-bottom-right-radius: 0;
+  display: flex;
+  align-items: center;
+}
+
+.gb-left-text-container p {
+  font-size: 14px;
+  margin: 0;
+  font-size: 11px;
+  text-transform: uppercase;
+  padding-left: 8px;
+  white-space: nowrap;
+}
+
+.gb-left-text-container span {
+  font-weight: bold;
+  font-size: large;
+  font-size: 30px;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 0px solid transparent;
+  border-top: 20px solid #fff;
+}
+
+.fylo-data-right-content {
+  color: white;
+  font-size: 11px;
+  font-weight: 100;
+}
+
+.fylo-data-right-text {
+  white-space: nowrap;
+}
+
+.fylo-data-right-text span {
+  font-weight: 400;
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  background-color: hsl(229, 57%, 11%);
+  height: 8px;
+  border-radius: 10px;
+  padding: 3px;
+}
+
+.progress {
+  border-radius: 8px;
+  height: 6px;
+  width: 84%;
+  background: linear-gradient(90deg, hsl(6, 100%, 80%), hsl(335, 100%, 65%));
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 2px;
+}
+
+.progress-tracker {
+  height: 6px;
+  width: 6px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.propgress-bounds {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+}
+
+.bg-image {
+  width: 100%;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+@media screen and (min-width: 376px) and (max-width: 1440px) {
+}
+
+@media screen and (min-width: 501px) and (max-width: 700px) {
+  .fylo-data-item-container {
+    bottom: 35%;
+  }
+}
+
+@media only screen and (min-width: 376px) and (max-width: 500px) {
+  .fylo-data-container {
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .fylo-data-storage-container {
+    background-image: url(./images/bg-mobile.svg);
+    background-size: cover;
+    position: initial;
+  }
+  .fylo-data-item-container {
+    position: initial;
+    align-items: center;
+  }
+  .fylo-data.fylo-data-right {
+    margin: 0;
+    margin-top: 8%;
+  }
+  .fylo-data-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .fylo-data,
+  .fylo-data.fylo-data-left,
+  .fylo-data.fylo-data-right {
+    width: 100%;
+  }
+  .bg-image-container {
+    display: none;
+  }
+  #gb-left-container-mobile {
+    display: flex;
+    position: relative;
+    bottom: 25px;
+  }
+  #gb-left-container-desktop {
+    display: none;
+  }
+  #gb-left-container-mobile .gb-left-text-container {
+    border-radius: 8px;
+  }
+  .gb-left {
+    position: initial;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .icons-container {
+    margin-top: 30px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .fylo-data-container {
+    width: 65%;
+  }
+  .fylo-data-right-text {
+    white-space: initial;
+  }
+}
